@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Users,
   Key,
@@ -35,6 +35,12 @@ export default function FrontDeskPage() {
   const [requests, setRequests] = useState(mockRequests);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('arrivals');
+
+  useEffect(() => {
+    bookingService.getAllBookings().then(res => {
+      if (res?.bookings?.length) setReservations(res.bookings);
+    }).catch(() => {});
+  }, []);
 
   // Modal states for Check-In and Check-Out
   const [checkInModal, setCheckInModal] = useState({ open: false, booking: null, roomNumber: '' });

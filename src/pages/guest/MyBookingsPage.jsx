@@ -224,10 +224,6 @@ export default function MyBookingsPage() {
                           Cancel Stay
                         </Button>
                       )}
-
-                      <Link to={`/booking/confirmation/${b.bookingRef}`} className="btn btn-outline btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                        <Eye size={15} /> Digital Voucher
-                      </Link>
                     </div>
                   </div>
                 </div>

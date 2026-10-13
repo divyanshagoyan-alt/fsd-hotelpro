@@ -16,17 +16,36 @@ import {
   Sparkles
 } from 'lucide-react';
 import { mockReservations, mockHotels, mockRooms } from '../../data/mock/mockData';
+import { getStoredOfflineBookings } from '../../services/bookingService';
 import { Button, StatusBadge, Alert } from '../../components/common/UI';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContext';
 
 export default function BookingConfirmationPage() {
   const { bookingRef } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
-  // Try retrieving booking from location state or fallback to mockReservations
+  // Security Check: Disallow direct URL access to view receipts
+  const isDirectUrlAccess = !location.state?.fromCheckout && !location.state?.booking;
+
+  useEffect(() => {
+    if (isDirectUrlAccess) {
+      toast.warning('Direct URL access to receipts is restricted. Please view your receipts in My Bookings.');
+      const timer = setTimeout(() => {
+        navigate(isAuthenticated ? '/my-bookings' : '/login', { replace: true });
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isDirectUrlAccess, isAuthenticated, navigate]);
+
+  // Try retrieving booking from location state or fallback to offline storage / mockReservations
   const [bookingData, setBookingData] = useState(() => {
     if (location.state?.booking) return location.state.booking;
+    const offlineBookings = getStoredOfflineBookings();
+    const offlineFound = offlineBookings.find(r => r.bookingRef === bookingRef || r.id === bookingRef);
+    if (offlineFound) return offlineFound;
     const found = mockReservations.find(r => r.bookingRef === bookingRef || r.id === bookingRef);
     return found || mockReservations[0];
   });
@@ -45,6 +64,42 @@ export default function BookingConfirmationPage() {
   const handlePrint = () => {
     window.print();
   };
+
+  if (isDirectUrlAccess) {
+    return (
+      <div className="container" style={{ paddingBlock: 'var(--space-16)', maxWidth: 640 }}>
+        <div className="card" style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
+          <div style={{
+            width: 60,
+            height: 60,
+            borderRadius: '50%',
+            background: 'rgba(239, 68, 68, 0.12)',
+            color: 'var(--color-error)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto var(--space-4)'
+          }}>
+            <ShieldCheck size={32} />
+          </div>
+          <h1 style={{ fontSize: 'var(--text-2xl)', fontWeight: 'var(--weight-bold)', marginBottom: 'var(--space-2)' }}>
+            Direct URL Access to Receipts Restricted
+          </h1>
+          <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-6)', lineHeight: 1.6 }}>
+            For guest privacy and fraud prevention, receipt vouchers cannot be accessed via direct URL links. Please log in to view your stay receipts inside your verified guest portal.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-3)' }}>
+            <Link to={isAuthenticated ? "/my-bookings" : "/login"} className="btn btn-primary">
+              {isAuthenticated ? "Go to My Bookings" : "Sign In to View Receipts"}
+            </Link>
+            <Link to="/" className="btn btn-ghost">
+              Return to Homepage
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container" style={{ paddingBlock: 'var(--space-10)', maxWidth: 880 }}>

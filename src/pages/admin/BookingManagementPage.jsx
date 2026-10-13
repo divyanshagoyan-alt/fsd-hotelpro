@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Calendar,
   Search,
@@ -27,6 +27,12 @@ export default function BookingManagementPage() {
   const [reservations, setReservations] = useState(mockReservations);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+
+  useEffect(() => {
+    bookingService.getAllBookings().then(res => {
+      if (res?.bookings?.length) setReservations(res.bookings);
+    }).catch(() => {});
+  }, []);
 
   // Selected reservation for details modal
   const [selectedBooking, setSelectedBooking] = useState(null);

@@ -51,15 +51,23 @@ HotelPro provides an interactive 1-click credential selector on `/login`:
 
 ---
 
-## 🍃 MongoDB Offline & Localhost Architecture
+## 🌟 Key Platform Features & Innovations
 
-HotelPro features seamless **MongoDB** integration with Mongoose:
-- **Offline Localhost First**: Configured for local offline development using `mongodb://127.0.0.1:27017/hotelpro`.
-- **Collections**: `users`, `hotels`, `rooms`, `bookings`, `housekeepings`, `servicerequests`, `auditlogs`.
-- **Database Seeder**: Run `npm run seed` to automatically populate demo users, hotels, room inventories, and reservations.
-- **Offline Resilience**: If MongoDB is stopped, the backend reports `connected: false` on `/api/health` without crashing, and the frontend gracefully falls back to the local mock database.
-
-📖 **Detailed Installation Guide**: See [MONGODB_README.md](./MONGODB_README.md) for Windows Service management, offline setup tips, and MongoDB Atlas cloud instructions.
+- **🏨 Real-Time Hotel Search & Discovery**:
+  - Top navigation **"Search Hotels"** menu and desktop quick-search input.
+  - Multi-attribute search on `/search` and `/hotels` matching hotel name, city, location, category, description, and amenities.
+  - Interactive destination quick-chips (Mumbai, Jaipur, Goa, New Delhi, Shimla, Bengaluru) with instant reset.
+- **💳 100% Offline & Simulated Payment Sandbox**:
+  - **Zero Network Error Guarantee**: Eliminates payment network failures when running offline or without an active backend server.
+  - 4 sandbox payment channels: **Credit/Debit Card** (visual sandbox card preview), **UPI / QR Code** (simulated QR scanner), **Net Banking** (top Indian banks), and **Pay at Property** (cash/card at check-in).
+  - Client-side persistence in `localStorage` (`hotelpro_offline_reservations`) and synchronized with MongoDB when online.
+- **🔒 Privacy & Receipt Security**:
+  - **Direct URL Access Restricted**: Direct public link access to `/booking/confirmation/:ref` is blocked to prevent guest data leaks.
+  - Receipts are viewed securely in-page via an authenticated modal dialog in **My Bookings**.
+  - Clean print stylesheet removing public footers from all vouchers.
+- **🛎️ Front Desk & Administrative Console**:
+  - Live guest check-in/check-out management, room assignment, housekeeping grids, and financial reports.
+  - Non-intrusive live operational alert popup at bottom-right for front-desk activity.
 
 ---
 

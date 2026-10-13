@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 export default function PublicNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [navSearch, setNavSearch] = useState('');
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -17,9 +18,19 @@ export default function PublicNavbar() {
     setUserMenuOpen(false);
   };
 
+  const handleNavSearch = (e) => {
+    e.preventDefault();
+    if (navSearch.trim()) {
+      navigate(`/search?q=${encodeURIComponent(navSearch.trim())}`);
+      setNavSearch('');
+    } else {
+      navigate('/search');
+    }
+  };
+
   const navLinks = [
     { to: '/hotels', label: 'Explore Hotels', icon: <Building size={16} /> },
-    { to: '/search', label: 'Search Rooms', icon: <Search size={16} /> },
+    { to: '/search', label: 'Search Hotels', icon: <Search size={16} /> },
   ];
 
   const getDashboardLink = () => {
@@ -53,6 +64,38 @@ export default function PublicNavbar() {
               </NavLink>
             ))}
           </nav>
+
+          {/* Quick Search in Navbar */}
+          <form onSubmit={handleNavSearch} className="hide-mobile" style={{ position: 'relative', width: 220, marginInline: 'var(--space-2)' }} role="search">
+            <input
+              type="text"
+              placeholder="Search hotels, cities..."
+              value={navSearch}
+              onChange={e => setNavSearch(e.target.value)}
+              className="form-input"
+              style={{
+                paddingLeft: 34,
+                paddingBlock: '6px',
+                fontSize: 'var(--text-xs)',
+                borderRadius: 'var(--radius-full)',
+                background: 'var(--color-bg)',
+                border: '1px solid var(--color-border)',
+                width: '100%',
+              }}
+              aria-label="Search hotels by name or city"
+            />
+            <Search
+              size={14}
+              style={{
+                position: 'absolute',
+                left: 12,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: 'var(--color-text-secondary)',
+                pointerEvents: 'none'
+              }}
+            />
+          </form>
 
           {/* Actions */}
           <div className="navbar-actions">

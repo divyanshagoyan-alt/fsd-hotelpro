@@ -13,11 +13,14 @@ export default function HomePage() {
   const handleSearch = (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (search.destination) params.set('city', search.destination);
+    if (search.destination.trim()) {
+      params.set('q', search.destination.trim());
+      params.set('city', search.destination.trim());
+    }
     if (search.checkIn) params.set('checkIn', search.checkIn);
     if (search.checkOut) params.set('checkOut', search.checkOut);
     if (search.guests > 1) params.set('guests', search.guests);
-    navigate(`/hotels?${params.toString()}`);
+    navigate(`/search?${params.toString()}`);
   };
 
   const today = new Date().toISOString().split('T')[0];

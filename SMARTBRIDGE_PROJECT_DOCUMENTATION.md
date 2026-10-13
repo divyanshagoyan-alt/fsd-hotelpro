@@ -421,6 +421,15 @@ In scenarios where MongoDB is undergoing maintenance:
 }
 ```
 
+### 11.3 Advanced Feature Test & Quality Verification
+
+| Test Case | Scenario / Condition | Expected Behavior | Verification Status |
+| :--- | :--- | :--- | :--- |
+| **Offline Fake Payment** | User completes checkout when server is unreachable or offline | Payment approves via simulated gateway; generates reference `HP-2026-XXX`; zero "Network Error" displayed; persists in `localStorage` | ✅ PASS (Verified via Browser Subagent) |
+| **Real-Time Hotel Search** | User searches by name ("Haveli", "Meridian"), destination ("Jaipur"), or category | Matches across hotel names, cities, landmarks, and amenities; real-time results update instantly | ✅ PASS (Verified via Browser Subagent) |
+| **Direct Receipt URL Restriction** | Unauthenticated or direct URL entry to `/booking/confirmation/:ref` | Blocks direct URL link access; renders security notice card; redirects to My Bookings | ✅ PASS (Verified via Browser Subagent) |
+| **In-Page Receipt Modal** | Guest clicks "View Receipt" in My Bookings | Opens high-fidelity stay voucher modal in authenticated portal without public URL exposure | ✅ PASS (Verified via Browser Subagent) |
+
 ---
 
 ## 12. PROJECT OUTCOMES, IMPACT & FUTURE ENHANCEMENTS
