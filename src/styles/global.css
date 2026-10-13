@@ -1,0 +1,77 @@
+/* ============================================================
+   HotelPro Global Styles
+   Base typography, links, and semantic element styles.
+   ============================================================ */
+
+/* --- Typography Hierarchy --- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+h5 { font-size: var(--text-md); }
+h6 { font-size: var(--text-base); }
+
+p {
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+
+.text-secondary { color: var(--color-text-secondary); }
+.text-disabled  { color: var(--color-text-disabled); }
+.text-primary-brand { color: var(--color-primary); }
+.text-secondary-brand { color: var(--color-secondary); }
+
+/* Editorial serif headings for guest-facing hero sections */
+.editorial-heading {
+  font-family: var(--font-editorial);
+  font-weight: var(--weight-semibold);
+}
+
+/* Tabular numerals for prices and statistics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Links --- */
+.text-link {
+  color: var(--color-primary);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+.text-link:hover {
+  color: var(--color-primary-hover);
+}
+
+/* --- Dividers --- */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* --- Selection --- */
+::selection {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+/* --- Scrollbar (subtle) --- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-disabled);
+}

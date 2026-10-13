@@ -1,0 +1,20 @@
+/* HotelPro Global Stylesheet Entry Point */
+@import './styles/index.css';
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Additional global overrides */
+html, body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Toast styling override to match HotelPro palette */
+.Toastify__toast {
+  font-family: var(--font-ui);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-lg);
+}
