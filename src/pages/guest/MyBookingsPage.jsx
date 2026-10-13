@@ -243,25 +243,20 @@ export default function MyBookingsPage() {
         onClose={() => setReceiptModalOpen(false)}
         title="Stay Receipt & Billing Summary"
         size="md"
-        footer={
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <Button variant="ghost" onClick={() => window.print()} icon={<Download size={15} />}>
-              Print Receipt
-            </Button>
-            <Button variant="primary" onClick={() => setReceiptModalOpen(false)}>
-              Done
-            </Button>
-          </div>
-        }
       >
         {selectedBooking && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', fontSize: 'var(--text-sm)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-3)' }}>
               <div>
                 <strong>{selectedBooking.hotelName}</strong>
                 <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-secondary)' }}>Ref: {selectedBooking.bookingRef}</div>
               </div>
-              <StatusBadge status={selectedBooking.status} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                <StatusBadge status={selectedBooking.status} />
+                <Button variant="outline" size="sm" onClick={() => window.print()} icon={<Download size={13} />} className="no-print">
+                  Print
+                </Button>
+              </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)', background: 'var(--color-bg)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)' }}>

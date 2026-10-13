@@ -75,3 +75,59 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-disabled);
 }
+
+/* ============================================================
+   Print Styles — Clean Receipt & Voucher Generation
+   ============================================================ */
+@media print {
+  /* Remove footers and chrome from all receipts and vouchers */
+  .public-footer,
+  footer,
+  .modal-footer,
+  .public-navbar,
+  .dashboard-sidebar,
+  .dashboard-header-bar,
+  .mobile-nav-drawer,
+  .sidebar-overlay,
+  .Toastify,
+  aside[aria-label="Live System Notification"],
+  button[title="Open Operational Alerts"],
+  .no-print,
+  .btn,
+  button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .modal-backdrop {
+    background: #ffffff !important;
+    position: static !important;
+    padding: 0 !important;
+  }
+
+  .modal-dialog {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
