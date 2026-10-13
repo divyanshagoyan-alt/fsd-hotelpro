@@ -484,11 +484,21 @@ export const mockTestimonials = [
 // ─── DESTINATIONS ─────────────────────────────────────────────────────────────
 export const mockDestinations = [
   { id: "d1", name: "Goa", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80", hotels: 24, tagline: "Sun, Sea & Serenity" },
-  { id: "d2", name: "Jaipur", image: "https://images.unsplash.com/photo-1599661046289-e31897846e4b?w=600&q=80", hotels: 18, tagline: "The Pink City" },
+  { id: "d2", name: "Jaipur", image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?w=600&q=80", hotels: 18, tagline: "The Pink City" },
   { id: "d3", name: "Mumbai", image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&q=80", hotels: 42, tagline: "City That Never Sleeps" },
   { id: "d4", name: "Udaipur", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80", hotels: 12, tagline: "City of Lakes" },
-  { id: "d5", name: "Shimla", image: "https://images.unsplash.com/photo-1597843786186-33949a78cd76?w=600&q=80", hotels: 16, tagline: "Queen of Hills" },
+  { id: "d5", name: "Shimla", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", hotels: 16, tagline: "Queen of Hills" },
   { id: "d6", name: "Kerala", image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=600&q=80", hotels: 28, tagline: "God's Own Country" },
+];
+
+// ─── GUESTS CRM ───────────────────────────────────────────────────────────────
+export const mockGuestsList = [
+  { id: "g1", name: "Arjun Sharma", email: "arjun.sharma@email.com", phone: "+91 98765 43210", city: "Mumbai", totalBookings: 5, totalSpent: 124500, vipTier: "Platinum", lastStay: "2026-10-23", status: "active" },
+  { id: "g2", name: "Priya Nair", email: "priya.nair@email.com", phone: "+91 87654 32109", city: "Bengaluru", totalBookings: 3, totalSpent: 48900, vipTier: "Gold", lastStay: "2026-10-12", status: "active" },
+  { id: "g3", name: "Rahul Verma", email: "rahul.verma@email.com", phone: "+91 76543 21098", city: "Delhi", totalBookings: 2, totalSpent: 52000, vipTier: "Silver", lastStay: "2026-10-11", status: "active" },
+  { id: "g4", name: "Meera Iyer", email: "meera.iyer@email.com", phone: "+91 65432 10987", city: "Chennai", totalBookings: 4, totalSpent: 76400, vipTier: "Gold", lastStay: "2026-11-04", status: "active" },
+  { id: "g5", name: "Vikram Malhotra", email: "vikram.m@email.com", phone: "+91 99887 76655", city: "Pune", totalBookings: 6, totalSpent: 168000, vipTier: "Platinum", lastStay: "2026-09-18", status: "active" },
+  { id: "g6", name: "Ananya Sen", email: "ananya.sen@email.com", phone: "+91 91234 56789", city: "Kolkata", totalBookings: 1, totalSpent: 18500, vipTier: "Bronze", lastStay: "2026-08-05", status: "inactive" },
 ];
 
 // ─── PAYMENTS ─────────────────────────────────────────────────────────────────

@@ -198,7 +198,15 @@ export default function HotelsPage() {
                   <Link to={`/hotels/${hotel.slug}`} key={hotel.id} style={{ textDecoration: 'none', display: 'block' }}>
                     <article className="hotel-card" style={{ height: '100%' }}>
                       <div className="hotel-card-image">
-                        <img src={hotel.image} alt={hotel.name} loading="lazy" />
+                        <img
+                          src={hotel.image}
+                          alt={hotel.name}
+                          loading="lazy"
+                          onError={e => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80';
+                          }}
+                        />
                         <div style={{ position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)' }}>
                           <span className="badge" style={{ background: 'var(--color-secondary)', color: '#fff', fontSize: 'var(--text-xs)' }}>
                             {hotel.category}

@@ -25,11 +25,11 @@
   --color-bg:             #F7F6F2;
   --color-surface:        #FFFFFF;
   --color-surface-raised: #FAFAF8;
-  --color-text-primary:   #242824;
-  --color-text-secondary: #686D67;
-  --color-text-disabled:  #A8ADA7;
-  --color-border:         #E4E5DE;
-  --color-border-strong:  #C8CAC2;
+  --color-text-primary:   #1D221D;
+  --color-text-secondary: #4E544E;
+  --color-text-disabled:  #8E948D;
+  --color-border:         #E1E3DC;
+  --color-border-strong:  #C2C5BC;
 
   /* --- Focus --- */
   --color-focus:          #276EF1;

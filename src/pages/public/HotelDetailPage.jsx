@@ -103,6 +103,10 @@ export default function HotelDetailPage() {
         <img
           src={allImages[imgIdx]}
           alt={`${hotel.name} — image ${imgIdx + 1}`}
+          onError={e => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80';
+          }}
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
         />
         {allImages.length > 1 && (
@@ -230,6 +234,10 @@ export default function HotelDetailPage() {
                           alt={room.name}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                           loading="lazy"
+                          onError={e => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80';
+                          }}
                         />
                       </div>
                       <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>

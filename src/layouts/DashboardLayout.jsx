@@ -3,9 +3,11 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Menu, X, Bell, LogOut, ChevronRight } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import BottomNotificationPopup from '../components/common/BottomNotificationPopup';
 
 export default function DashboardLayout({ navItems = [], roleLabel = 'Dashboard', roleColor = 'var(--color-primary)' }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -101,7 +103,12 @@ export default function DashboardLayout({ navItems = [], roleLabel = 'Dashboard'
 
           <div style={{ flex: 1 }} />
 
-          <button className="btn btn-ghost btn-icon" aria-label="Notifications">
+          <button
+            className="btn btn-ghost btn-icon"
+            onClick={() => setShowNotifications(v => !v)}
+            aria-label="Operational Notifications"
+            title="Operational Notifications"
+          >
             <Bell size={18} />
           </button>
 
@@ -114,6 +121,12 @@ export default function DashboardLayout({ navItems = [], roleLabel = 'Dashboard'
           <Outlet />
         </main>
       </div>
+
+      {/* Live Operational Popup Notification at Bottom Right */}
+      <BottomNotificationPopup
+        isOpen={showNotifications}
+        onClose={() => setShowNotifications(false)}
+      />
     </div>
   );
 }

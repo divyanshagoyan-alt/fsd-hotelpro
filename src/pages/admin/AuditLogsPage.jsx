@@ -68,7 +68,7 @@ export default function AuditLogsPage() {
           <table className="table" style={{ width: '100%' }}>
             <thead>
               <tr>
-                <th>Timestamp (UTC)</th>
+                <th className="ref-col">Timestamp (UTC)</th>
                 <th>Operator</th>
                 <th>Action Taken</th>
                 <th>Target Resource</th>
@@ -78,7 +78,7 @@ export default function AuditLogsPage() {
             <tbody>
               {filteredLogs.map(log => (
                 <tr key={log.id}>
-                  <td style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)' }}>
+                  <td className="ref-col" style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)' }}>
                     {log.timestamp.replace('T', ' ').replace('Z', '')}
                   </td>
                   <td>

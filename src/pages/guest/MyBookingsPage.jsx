@@ -155,20 +155,26 @@ export default function MyBookingsPage() {
 
             return (
               <article key={b.id} className="card" style={{ padding: 'var(--space-6)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: 'var(--space-6)', alignItems: 'center' }}>
+                <div className="guest-booking-card-grid">
                   <img
                     src={room?.image || hotel?.image || 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80'}
                     alt={b.roomName}
-                    style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 'var(--radius-lg)' }}
+                    onError={e => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80';
+                    }}
+                    style={{ width: '100%', height: 150, objectFit: 'cover', borderRadius: 'var(--radius-lg)' }}
                   />
 
                   <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
                       <div>
-                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-secondary)', fontWeight: 'var(--weight-semibold)', textTransform: 'uppercase' }}>
-                          Ref: {b.bookingRef}
-                        </span>
-                        <h2 style={{ fontSize: 'var(--text-xl)', fontWeight: 'var(--weight-bold)', marginTop: 2 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-1)' }}>
+                          <span className="ref-badge secondary">
+                            {b.bookingRef}
+                          </span>
+                        </div>
+                        <h2 style={{ fontSize: 'var(--text-xl)', fontWeight: 'var(--weight-bold)', color: 'var(--color-text-primary)', marginTop: 2 }}>
                           {b.hotelName}
                         </h2>
                         <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', marginTop: 2 }}>

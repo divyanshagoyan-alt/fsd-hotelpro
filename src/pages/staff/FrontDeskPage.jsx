@@ -211,7 +211,7 @@ export default function FrontDeskPage() {
             <table className="table" style={{ width: '100%' }}>
               <thead>
                 <tr>
-                  <th>Booking Ref</th>
+                  <th className="ref-col">Ref</th>
                   <th>Guest Name</th>
                   <th>Room Type</th>
                   <th>Room Assigned</th>
@@ -230,7 +230,7 @@ export default function FrontDeskPage() {
                 ) : (
                   arrivals.map(b => (
                     <tr key={b.id}>
-                      <td><span style={{ fontFamily: 'var(--font-mono)', fontWeight: 'var(--weight-semibold)', color: 'var(--color-primary)' }}>{b.bookingRef}</span></td>
+                      <td className="ref-col"><span className="ref-badge">{b.bookingRef}</span></td>
                       <td>
                         <strong>{b.guestName}</strong>
                         <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-secondary)' }}>{b.guestPhone}</div>
@@ -325,7 +325,7 @@ export default function FrontDeskPage() {
             <table className="table" style={{ width: '100%' }}>
               <thead>
                 <tr>
-                  <th>Booking Ref</th>
+                  <th className="ref-col">Ref</th>
                   <th>Guest Name</th>
                   <th>Room #</th>
                   <th>Departure Date</th>
@@ -337,7 +337,7 @@ export default function FrontDeskPage() {
               <tbody>
                 {departures.map(b => (
                   <tr key={b.id}>
-                    <td><span style={{ fontFamily: 'var(--font-mono)' }}>{b.bookingRef}</span></td>
+                    <td className="ref-col"><span className="ref-badge">{b.bookingRef}</span></td>
                     <td>{b.guestName}</td>
                     <td><strong>#{b.roomNumber}</strong></td>
                     <td>{b.checkOut}</td>

@@ -187,7 +187,7 @@ export default function RoomManagementPage() {
           <table className="table" style={{ width: '100%' }}>
             <thead>
               <tr>
-                <th>Room #</th>
+                <th className="ref-col">Room #</th>
                 <th>Room Type & Name</th>
                 <th>Floor</th>
                 <th>Capacity</th>
@@ -199,17 +199,21 @@ export default function RoomManagementPage() {
             <tbody>
               {filteredRooms.map(room => (
                 <tr key={room.id}>
-                  <td>
-                    <strong style={{ fontSize: 'var(--text-md)', color: 'var(--color-primary)' }}>
+                  <td className="ref-col">
+                    <span className="ref-badge">
                       #{room.roomNumber}
-                    </strong>
+                    </span>
                   </td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                       <img
                         src={room.image}
                         alt={room.name}
-                        style={{ width: 48, height: 40, objectFit: 'cover', borderRadius: 'var(--radius-sm)' }}
+                        onError={e => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80';
+                        }}
+                        style={{ width: 52, height: 44, objectFit: 'cover', borderRadius: 'var(--radius-sm)' }}
                       />
                       <div>
                         <strong>{room.name}</strong>

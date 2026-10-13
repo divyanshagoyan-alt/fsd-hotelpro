@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Menu, X, User, Bell, LogOut, ChevronDown } from 'lucide-react';
+import { Menu, X, User, Bell, LogOut, ChevronDown, Building, Search, LayoutDashboard, Calendar } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -18,8 +18,8 @@ export default function PublicNavbar() {
   };
 
   const navLinks = [
-    { to: '/hotels', label: 'Hotels' },
-    { to: '/style-guide', label: 'Style Guide' },
+    { to: '/hotels', label: 'Explore Hotels', icon: <Building size={16} /> },
+    { to: '/search', label: 'Search Rooms', icon: <Search size={16} /> },
   ];
 
   const getDashboardLink = () => {
@@ -46,8 +46,10 @@ export default function PublicNavbar() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) => `navbar-link${isActive ? ' active' : ''}`}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
               >
-                {link.label}
+                {link.icon}
+                <span>{link.label}</span>
               </NavLink>
             ))}
           </nav>
@@ -79,11 +81,14 @@ export default function PublicNavbar() {
                       </div>
                       {getDashboardLink() && (
                         <Link to={getDashboardLink()} className="dropdown-item" role="menuitem" onClick={() => setUserMenuOpen(false)}>
-                          <User size={15} /> Dashboard
+                          <LayoutDashboard size={15} /> Management Console
                         </Link>
                       )}
                       <Link to="/my-bookings" className="dropdown-item" role="menuitem" onClick={() => setUserMenuOpen(false)}>
-                        <Bell size={15} /> My Bookings
+                        <Calendar size={15} /> My Bookings
+                      </Link>
+                      <Link to="/profile" className="dropdown-item" role="menuitem" onClick={() => setUserMenuOpen(false)}>
+                        <User size={15} /> My Profile
                       </Link>
                       <div className="dropdown-divider" />
                       <button className="dropdown-item destructive" role="menuitem" onClick={handleLogout}>
@@ -125,8 +130,10 @@ export default function PublicNavbar() {
             to={link.to}
             className={({ isActive }) => `mobile-nav-link${isActive ? ' active' : ''}`}
             onClick={() => setMobileOpen(false)}
+            style={{ display: 'flex', alignItems: 'center', gap: 8 }}
           >
-            {link.label}
+            {link.icon}
+            <span>{link.label}</span>
           </NavLink>
         ))}
         {!isAuthenticated && (

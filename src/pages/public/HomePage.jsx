@@ -237,6 +237,10 @@ export default function HomePage() {
                 <img
                   src={dest.image}
                   alt={dest.name}
+                  onError={e => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80';
+                  }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform var(--transition-slow)' }}
                   onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
                   onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -281,6 +285,10 @@ export default function HomePage() {
                       src={hotel.image}
                       alt={hotel.name}
                       loading="lazy"
+                      onError={e => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80';
+                      }}
                     />
                     <div style={{
                       position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)',

@@ -112,7 +112,7 @@ export default function BookingManagementPage() {
           <table className="table" style={{ width: '100%' }}>
             <thead>
               <tr>
-                <th>Booking Ref</th>
+                <th className="ref-col">Ref</th>
                 <th>Guest Information</th>
                 <th>Property</th>
                 <th>Room Type</th>
@@ -125,8 +125,8 @@ export default function BookingManagementPage() {
             <tbody>
               {filteredReservations.map(res => (
                 <tr key={res.id}>
-                  <td>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 'var(--weight-semibold)', color: 'var(--color-primary)' }}>
+                  <td className="ref-col">
+                    <span className="ref-badge">
                       {res.bookingRef}
                     </span>
                   </td>

@@ -10,11 +10,13 @@ import {
   Sparkles,
   Building,
   Home,
-  CheckCircle2
+  BarChart3,
+  UserCheck,
+  Settings
 } from 'lucide-react';
 
 // Context Providers
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { BookingProvider } from './context/BookingContext';
 
 // Common Components & Guards
@@ -31,7 +33,6 @@ import HotelsPage from './pages/public/HotelsPage';
 import HotelDetailPage from './pages/public/HotelDetailPage';
 import CheckoutPage from './pages/public/CheckoutPage';
 import BookingConfirmationPage from './pages/public/BookingConfirmationPage';
-import StyleGuidePage from './pages/public/StyleGuidePage';
 
 // Auth Pages
 import LoginPage from './pages/auth/LoginPage';
@@ -51,6 +52,9 @@ import RoomManagementPage from './pages/admin/RoomManagementPage';
 import BookingManagementPage from './pages/admin/BookingManagementPage';
 import StaffManagementPage from './pages/admin/StaffManagementPage';
 import AuditLogsPage from './pages/admin/AuditLogsPage';
+import GuestDirectoryPage from './pages/admin/GuestDirectoryPage';
+import AnalyticsReportsPage from './pages/admin/AnalyticsReportsPage';
+import HotelSettingsPage from './pages/admin/HotelSettingsPage';
 
 // Common Fallback Pages
 import NotFoundPage from './pages/common/NotFoundPage';
@@ -80,34 +84,42 @@ const adminNavItems = [
     label: 'Overview',
     items: [
       { to: '/admin', label: 'Executive Metrics', icon: <TrendingUp size={18} />, end: true },
+      { to: '/admin/reports', label: 'Financial & Analytics', icon: <BarChart3 size={18} /> },
     ],
   },
   {
-    label: 'Operations & Inventory',
+    label: 'Operations & Front Desk',
     items: [
-      { to: '/admin/rooms', label: 'Room Management', icon: <BedDouble size={18} /> },
+      { to: '/admin/front-desk', label: 'Front Desk Operations', icon: <Key size={18} /> },
       { to: '/admin/bookings', label: 'All Reservations', icon: <Calendar size={18} /> },
-      { to: '/staff/front-desk', label: 'Front Desk Live', icon: <Key size={18} /> },
-      { to: '/staff/housekeeping', label: 'Housekeeping Tasks', icon: <Sparkles size={18} /> },
+      { to: '/admin/rooms', label: 'Room Management', icon: <BedDouble size={18} /> },
+      { to: '/admin/housekeeping', label: 'Housekeeping Grid', icon: <Sparkles size={18} /> },
     ],
   },
   {
-    label: 'Administration',
+    label: 'People & CRM',
     items: [
+      { to: '/admin/guests', label: 'Guest Directory & VIP', icon: <UserCheck size={18} /> },
       { to: '/admin/staff', label: 'Staff & Shifts', icon: <Users size={18} /> },
-      { to: '/admin/audit-logs', label: 'Security & Audit Logs', icon: <Shield size={18} /> },
     ],
   },
   {
-    label: 'System & Views',
+    label: 'Administration & System',
     items: [
-      { to: '/style-guide', label: 'Style Guide & Tokens', icon: <CheckCircle2 size={18} /> },
-      { to: '/', label: 'Guest Homepage', icon: <Home size={18} /> },
+      { to: '/admin/audit-logs', label: 'Security & Audit Logs', icon: <Shield size={18} /> },
+      { to: '/admin/settings', label: 'Property & System Settings', icon: <Settings size={18} /> },
+      { to: '/', label: 'Public Portal', icon: <Home size={18} /> },
     ],
   },
 ];
 
 function StaffShell() {
+  const { user } = useAuth();
+  // If an administrator or manager accesses staff desk, redirect to admin front desk to preserve all menus
+  if (user?.role === 'admin' || user?.role === 'manager') {
+    return <Navigate to="/admin/front-desk" replace />;
+  }
+
   return (
     <DashboardLayout
       navItems={staffNavItems}
@@ -142,7 +154,7 @@ export default function App() {
                 <Route path="/hotels/:id" element={<HotelDetailPage />} />
                 <Route path="/checkout/:roomId" element={<CheckoutPage />} />
                 <Route path="/booking/confirmation/:bookingRef" element={<BookingConfirmationPage />} />
-                <Route path="/style-guide" element={<StyleGuidePage />} />
+                <Route path="/style-guide" element={<Navigate to="/" replace />} />
 
                 {/* Authentication */}
                 <Route path="/login" element={<LoginPage />} />
@@ -195,10 +207,15 @@ export default function App() {
                 }
               >
                 <Route index element={<AdminDashboardPage />} />
+                <Route path="front-desk" element={<FrontDeskPage />} />
                 <Route path="rooms" element={<RoomManagementPage />} />
                 <Route path="bookings" element={<BookingManagementPage />} />
+                <Route path="housekeeping" element={<HousekeepingPage />} />
+                <Route path="guests" element={<GuestDirectoryPage />} />
+                <Route path="reports" element={<AnalyticsReportsPage />} />
                 <Route path="staff" element={<StaffManagementPage />} />
                 <Route path="audit-logs" element={<AuditLogsPage />} />
+                <Route path="settings" element={<HotelSettingsPage />} />
               </Route>
 
               {/* Manager alias redirecting to /admin */}
@@ -206,9 +223,9 @@ export default function App() {
             </Routes>
           </ErrorBoundary>
 
-          {/* Toast notifications */}
+          {/* Toast notifications positioned at bottom right */}
           <ToastContainer
-            position="top-right"
+            position="bottom-right"
             autoClose={3500}
             hideProgressBar={false}
             newestOnTop
