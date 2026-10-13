@@ -30,7 +30,6 @@ export default function PublicNavbar() {
 
   const navLinks = [
     { to: '/hotels', label: 'Explore Hotels', icon: <Building size={16} /> },
-    { to: '/search', label: 'Search Hotels', icon: <Search size={16} /> },
   ];
 
   const getDashboardLink = () => {
