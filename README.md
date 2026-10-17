@@ -1,15 +1,15 @@
 # HotelPro — Human-Centered Hotel Management System 🏨
 
-[![SmartBridge Program](https://img.shields.io/badge/Program-SmartBridge_Full_Stack_MERN-orange.svg)](./SMARTBRIDGE_PROJECT_DOCUMENTATION.md)
-[![Developer](https://img.shields.io/badge/Developer-DIVYANSH_AGARWAL-blue.svg)](./SMARTBRIDGE_PROJECT_DOCUMENTATION.md)
+[![Testing & UAT](https://img.shields.io/badge/Testing-UAT_%26_Performance-orange.svg)](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
+[![Developer](https://img.shields.io/badge/Developer-DIVYANSH_AGARWAL-blue.svg)](https://github.com/divyanshagoyan-alt)
 [![MERN Stack](https://img.shields.io/badge/Stack-MERN-green.svg)](https://www.mongodb.com/)
 [![React 19](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://react.dev/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB_9.0-47A248.svg)](https://www.mongodb.com/)
 [![WCAG 2.1 AA](https://img.shields.io/badge/Accessibility-WCAG_2.1_AA-blue.svg)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 
-> **SmartBridge Full Stack Development Program (MERN Stack) — Capstone Project**  
+> **Full Stack Development Program (MERN Stack) — Capstone Project**  
 > **Developed by: DIVYANSH AGARWAL**  
-> 📄 **Complete Project Technical Report**: [SMARTBRIDGE_PROJECT_DOCUMENTATION.md](./SMARTBRIDGE_PROJECT_DOCUMENTATION.md)
+> 📄 **Project Testing & Verification Report**: [User Acceptance & Performance Testing Template](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
 
 HotelPro is a complete, human-centered hotel management platform built around the **MERN** stack (MongoDB, Express, React 19, Node.js). Engineered with a refined editorial aesthetic, tactile micro-animations, accessible UI components, and complete role-based user journeys for guests, front-desk staff, housekeeping teams, and hotel executives.
 
@@ -19,7 +19,7 @@ HotelPro is a complete, human-centered hotel management platform built around th
 
 | Document | Description |
 | :--- | :--- |
-| 📘 **[SmartBridge Technical Report](./SMARTBRIDGE_PROJECT_DOCUMENTATION.md)** | **Comprehensive project submission report** by **DIVYANSH AGARWAL**, detailing system architecture, Mongoose schemas, ERD, API specs, and QA results. |
+| 📘 **[UAT & Performance Report](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)** | **Comprehensive QA & Performance Testing Specification** by **DIVYANSH AGARWAL**, detailing system architecture, test cases, benchmarks, and sign-off. |
 | 🍃 **[MongoDB Installation & Setup Guide](./MONGODB_README.md)** | Step-by-step offline localhost setup, Windows Service management (`127.0.0.1:27017`), seeding, and Atlas guide. |
 | 🎨 **[Interactive Style Guide (Live)](http://localhost:5173/style-guide)** | Accessible design tokens, WCAG 2.1 AA color contrast palette, tactile states, and typography. |
 
@@ -133,7 +133,9 @@ npm run dev
 hotelpro/
 ├── .env                                 # Active local environment variables
 ├── .env.example                         # Environment template
-├── SMARTBRIDGE_PROJECT_DOCUMENTATION.md # SmartBridge Full Stack Program Capstone Report
+├── documentations/                      # Project testing & performance documentation specifications
+│   ├── User Acceptance Testing (UAT) Template.md
+│   └── User Acceptance Testing (UAT) Template.docx
 ├── MONGODB_README.md                    # Comprehensive MongoDB installation & offline guide
 ├── README.md                            # Main project overview & quickstart
 ├── server/                              # MERN Backend Express API
@@ -166,7 +168,7 @@ hotelpro/
 ## 👨‍💻 Author & Project Credits
 
 - **Developer**: **DIVYANSH AGARWAL**
-- **Program**: SmartBridge Full Stack Web Development (MERN Stack)
+- **Program**: Full Stack Web Development (MERN Stack)
 - **Specialization**: MongoDB, Express.js, React 19, Node.js, Human-Centered UI/UX
-- **Project Report**: [SMARTBRIDGE_PROJECT_DOCUMENTATION.md](./SMARTBRIDGE_PROJECT_DOCUMENTATION.md)
+- **Project Report**: [User Acceptance & Performance Testing Specification](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
 - **License**: MIT / Educational Project Submission
