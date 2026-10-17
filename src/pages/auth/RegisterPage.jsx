@@ -112,14 +112,21 @@ export default function RegisterPage() {
             {errors.confirmPassword && <span className="form-error">{errors.confirmPassword}</span>}
           </div>
 
-          <div className="form-check mt-4">
+          <div className="form-check mt-4 mb-6" style={{ alignItems: 'flex-start' }}>
             <input type="checkbox" className="form-check-input" id="reg-terms" required />
-            <label className="form-check-label" htmlFor="reg-terms">
-              I agree to the <a href="#" className="text-link">Terms of Service</a> and <a href="#" className="text-link">Privacy Policy</a>
+            <label className="form-check-label" htmlFor="reg-terms" style={{ cursor: 'pointer' }}>
+              I agree to the{' '}
+              <a href="#terms" className="text-link" onClick={(e) => e.preventDefault()}>
+                Terms of Service
+              </a>{' '}
+              and{' '}
+              <a href="#privacy" className="text-link" onClick={(e) => e.preventDefault()}>
+                Privacy Policy
+              </a>
             </label>
           </div>
 
-          <Button type="submit" variant="primary" size="lg" loading={loading} className="w-full mt-5">
+          <Button type="submit" variant="primary" size="lg" loading={loading} className="w-full">
             Create Account
           </Button>
 

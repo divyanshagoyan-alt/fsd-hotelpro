@@ -1,6 +1,6 @@
 # HotelPro — Human-Centered Hotel Management System 🏨
 
-[![Testing & UAT](https://img.shields.io/badge/Testing-UAT_%26_Performance-orange.svg)](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
+[![Documentation](https://img.shields.io/badge/Documentation-Project_Deliverables-orange.svg)](./Documentations)
 [![Developer](https://img.shields.io/badge/Developer-DIVYANSH_AGARWAL-blue.svg)](https://github.com/divyanshagoyan-alt)
 [![MERN Stack](https://img.shields.io/badge/Stack-MERN-green.svg)](https://www.mongodb.com/)
 [![React 19](https://img.shields.io/badge/React-19.2-61dafb.svg)](https://react.dev/)
@@ -9,7 +9,7 @@
 
 > **Full Stack Development Program (MERN Stack) — Capstone Project**  
 > **Developed by: DIVYANSH AGARWAL**  
-> 📄 **Project Testing & Verification Report**: [User Acceptance & Performance Testing Template](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
+> 📁 **Project Documentation**: [Documentations Folder](./Documentations)
 
 HotelPro is a complete, human-centered hotel management platform built around the **MERN** stack (MongoDB, Express, React 19, Node.js). Engineered with a refined editorial aesthetic, tactile micro-animations, accessible UI components, and complete role-based user journeys for guests, front-desk staff, housekeeping teams, and hotel executives.
 
@@ -19,7 +19,8 @@ HotelPro is a complete, human-centered hotel management platform built around th
 
 | Document | Description |
 | :--- | :--- |
-| 📘 **[UAT & Performance Report](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)** | **Comprehensive QA & Performance Testing Specification** by **DIVYANSH AGARWAL**, detailing system architecture, test cases, benchmarks, and sign-off. |
+| 📁 **[Project Phase Documentations](./Documentations)** | **Complete Capstone Project Documentation Repository** across all development phases: Ideation, Project Planning, Requirement Analysis, Project Design, and Performance & UAT Testing. |
+| 📘 **[UAT & Performance Testing](./Documentations/Perfomance%20Testing/User%20Acceptance%20Testing%20(UAT)%20Template.docx)** | QA, User Acceptance & Performance Testing Specification by **DIVYANSH AGARWAL**. |
 | 🍃 **[MongoDB Installation & Setup Guide](./MONGODB_README.md)** | Step-by-step offline localhost setup, Windows Service management (`127.0.0.1:27017`), seeding, and Atlas guide. |
 | 🎨 **[Interactive Style Guide (Live)](http://localhost:5173/style-guide)** | Accessible design tokens, WCAG 2.1 AA color contrast palette, tactile states, and typography. |
 
@@ -133,9 +134,12 @@ npm run dev
 hotelpro/
 ├── .env                                 # Active local environment variables
 ├── .env.example                         # Environment template
-├── documentations/                      # Project testing & performance documentation specifications
-│   ├── User Acceptance Testing (UAT) Template.md
-│   └── User Acceptance Testing (UAT) Template.docx
+├── Documentations/                      # Comprehensive project phase deliverables & documentation
+│   ├── Ideation Phase - (1)/            # Brainstorming, problem definition, empathy maps
+│   ├── Project Planning Phase(2)/       # Project schedule & resource planning
+│   ├── Requirement Analysis(3)/         # DataFlow diagrams, SRS, tech stack specifications
+│   ├── Project Design Phase(4)/         # Solution architecture & proposed solution design
+│   └── Perfomance Testing/              # User Acceptance Testing (UAT) & benchmark template
 ├── MONGODB_README.md                    # Comprehensive MongoDB installation & offline guide
 ├── README.md                            # Main project overview & quickstart
 ├── server/                              # MERN Backend Express API
@@ -170,5 +174,5 @@ hotelpro/
 - **Developer**: **DIVYANSH AGARWAL**
 - **Program**: Full Stack Web Development (MERN Stack)
 - **Specialization**: MongoDB, Express.js, React 19, Node.js, Human-Centered UI/UX
-- **Project Report**: [User Acceptance & Performance Testing Specification](./documentations/User%20Acceptance%20Testing%20(UAT)%20Template.md)
+- **Project Documentation**: [Phase Deliverables & Testing Specifications](./Documentations)
 - **License**: MIT / Educational Project Submission

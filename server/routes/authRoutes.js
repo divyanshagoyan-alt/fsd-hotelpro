@@ -52,20 +52,68 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, password, role = 'guest', phone } = req.body;
-    let createdUser = null;
-    try {
-      createdUser = await User.create({ name, email, password, role, phone });
-    } catch {
-      createdUser = { id: 'usr' + Date.now(), name, email, role, phone };
+    const { name, email, password, role = 'guest', phone = '' } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'Name, email, and password are required.' });
     }
 
+    const normalizedEmail = email.toLowerCase().trim();
+    let createdUser = null;
+
+    try {
+      // Check if user already exists in DB
+      const existing = await User.findOne({ email: normalizedEmail });
+      if (existing) {
+        return res.status(409).json({ message: 'An account with this email already exists. Please sign in.' });
+      }
+
+      createdUser = await User.create({
+        name,
+        email: normalizedEmail,
+        password,
+        role: role || 'guest',
+        phone,
+      });
+    } catch (dbErr) {
+      // Handle MongoDB duplicate key error code 11000
+      if (dbErr.code === 11000) {
+        return res.status(409).json({ message: 'An account with this email already exists. Please sign in.' });
+      }
+      // Offline fallback
+      console.warn('[Auth] Registration using offline fallback:', dbErr.message);
+      createdUser = {
+        id: 'usr-' + Date.now(),
+        name,
+        email: normalizedEmail,
+        role: role || 'guest',
+        phone,
+        loyaltyPoints: 1000,
+        memberSince: new Date().toISOString().split('T')[0],
+      };
+    }
+
+    const userObj = {
+      id: createdUser._id?.toString() || createdUser.id,
+      name: createdUser.name,
+      email: createdUser.email,
+      role: createdUser.role,
+      phone: createdUser.phone || '',
+      loyaltyPoints: createdUser.loyaltyPoints || 1000,
+      memberSince: createdUser.memberSince || new Date().toISOString().split('T')[0],
+      preferences: createdUser.preferences || {
+        roomType: 'Deluxe',
+        bedType: 'King',
+        dietary: 'Vegetarian',
+        floorPreference: 'High Floor'
+      },
+    };
+
     return res.status(201).json({
-      user: createdUser,
-      token: `jwt-token-${createdUser.role}-${Date.now()}`
+      user: userObj,
+      token: `jwt-token-${userObj.role}-${Date.now()}`
     });
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message || 'Server error during registration.' });
   }
 });
 
