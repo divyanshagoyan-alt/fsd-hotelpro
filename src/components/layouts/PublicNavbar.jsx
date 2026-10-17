@@ -33,10 +33,10 @@ export default function PublicNavbar() {
   ];
 
   const getDashboardLink = () => {
-    if (!user) return null;
+    if (!user || user.role === 'guest') return null;
     if (user.role === 'admin' || user.role === 'manager') return '/admin';
     if (user.role === 'staff') return '/staff/front-desk';
-    return '/my-bookings';
+    return null;
   };
 
   return (
